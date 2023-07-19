@@ -165,6 +165,37 @@ app.put("/api/stories/:storyId", async (req, res) => {
   }
 });
 
+app.get("/api/stories/:storyId", async (req, res) => {
+  try {
+    const { storyHeading, storyDescription, storyCategory, slides, likesCount, storyImageUrl } = req.body;
+    const storyId = req.params.storyId;
+
+    // Validate minimum 3 slides
+    if (slides.length < 3) {
+      return res.status(400).json({ error: "Minimum 3 slides are required." });
+    }
+
+    const slideObjects = slides.map((slide) => ({
+      slide_heading: slide.slide_heading,
+      slide_description: slide.slide_description,
+      slide_imageurl: slide.slide_imageurl,
+      slide_category: slide.slide_category,
+    }));
+
+    const response= await Story.findById(storyId, {
+      storyHeading,
+      storyDescription,
+      storyCategory,
+      slides: slideObjects,
+      likesCount,
+      storyImageUrl,
+    });
+    res.json({ storydetails: response});
+  } catch (error) {
+    res.status(500).json({ error: "story is safe, but figuring out how to show" });
+  }
+});
+
 app.get("/api/categories", async (req, res) => {
   try {
     const categories = await Category.find();
