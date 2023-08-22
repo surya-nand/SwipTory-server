@@ -105,10 +105,11 @@ app.post("/api/stories", async (req, res) => {
       likesCount,
       storyImageUrl,
     } = req.body;
-    // Validate minimum 3 slides
-    if (slides.length < 3) {
-      return res.status(400).json({ error: "Minimum 3 slides are required." });
-    }
+    // // Validate minimum 3 slides
+    // if (slides.length < 3) {
+    //   return res.status(400).json({ error: "Minimum 3 slides are required." });
+    // }
+    
 
     const slideObjects = slides.map((slide) => ({
       slide_heading: slide.slide_heading,
@@ -138,10 +139,10 @@ app.put("/api/stories/:storyId", async (req, res) => {
     const { storyHeading, storyDescription, storyCategory, slides, likesCount, storyImageUrl } = req.body;
     const storyId = req.params.storyId;
 
-    // Validate minimum 3 slides
-    if (slides.length < 3) {
-      return res.status(400).json({ error: "Minimum 3 slides are required." });
-    }
+    // // Validate minimum 3 slides
+    // if (slides.length < 3) {
+    //   return res.status(400).json({ error: "Minimum 3 slides are required." });
+    // }
 
     const slideObjects = slides.map((slide) => ({
       slide_heading: slide.slide_heading,
@@ -170,10 +171,10 @@ app.get("/api/stories/:storyId", async (req, res) => {
     const { storyHeading, storyDescription, storyCategory, slides, likesCount, storyImageUrl } = req.body;
     const storyId = req.params.storyId;
 
-    // Validate minimum 3 slides
-    if (slides.length < 3) {
-      return res.status(400).json({ error: "Minimum 3 slides are required." });
-    }
+    // // Validate minimum 3 slides
+    // if (slides.length < 3) {
+    //   return res.status(400).json({ error: "Minimum 3 slides are required." });
+    // }
 
     const slideObjects = slides.map((slide) => ({
       slide_heading: slide.slide_heading,
@@ -236,6 +237,8 @@ app.post("/api/categories", async (req, res) => {
 
 app.listen(process.env.PORT, () => {
   mongoose
+
+
     .connect(process.env.MONGO_SERVER, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
