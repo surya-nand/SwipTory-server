@@ -148,7 +148,7 @@ app.put("/api/stories/:storyId", async (req, res) => {
       slide_category: slide.slide_category,
     }));
 
-    await Story.findByIdAndUpdate(storyId, {
+    await Story.findOneAndUpdate({unique_id:storyId}, {
       storyHeading,
       storyDescription,
       storyCategory,
