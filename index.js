@@ -98,6 +98,7 @@ app.get("/api/stories", async (req, res) => {
 app.post("/api/stories", async (req, res) => {
   try {
     const {
+      _id,
       storyHeading,
       storyDescription,
       storyCategory,
@@ -119,6 +120,7 @@ app.post("/api/stories", async (req, res) => {
     }));
 
     const newStory = new Story({
+      _id,
       storyHeading,
       storyDescription,
       storyCategory,
@@ -138,11 +140,6 @@ app.put("/api/stories/:storyId", async (req, res) => {
   try {
     const { storyHeading, storyDescription, storyCategory, slides, likesCount, storyImageUrl } = req.body;
     const storyId = req.params.storyId;
-
-    // // Validate minimum 3 slides
-    // if (slides.length < 3) {
-    //   return res.status(400).json({ error: "Minimum 3 slides are required." });
-    // }
 
     const slideObjects = slides.map((slide) => ({
       slide_heading: slide.slide_heading,
