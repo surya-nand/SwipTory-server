@@ -98,7 +98,7 @@ app.get("/api/stories", async (req, res) => {
 app.post("/api/stories", async (req, res) => {
   try {
     const {
-      _id,
+      unique_id,
       storyHeading,
       storyDescription,
       storyCategory,
@@ -120,7 +120,7 @@ app.post("/api/stories", async (req, res) => {
     }));
 
     const newStory = new Story({
-      _id,
+      unique_id,
       storyHeading,
       storyDescription,
       storyCategory,
