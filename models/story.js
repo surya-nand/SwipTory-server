@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const storySchema = new mongoose.Schema({
+  unique_id: String,
   storyHeading: String,
   storyDescription: String,
   likesCount: Number,
