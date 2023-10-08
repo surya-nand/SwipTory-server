@@ -1,6 +1,7 @@
 const storyUsers = require("../models/user")
 require("dotenv").config();
 
+/*----------------Fetch user details---------------*/
 const getUser = async (req, res) => {
   try {
     const users = await storyUsers.find();
@@ -13,6 +14,7 @@ const getUser = async (req, res) => {
   }
 };
 
+/*----------------Create new user---------------*/
 const createUser = async (req, res) => {
   try {
     const { userName, password, bookmarks, stories, likes } = req.body;
@@ -45,6 +47,7 @@ const createUser = async (req, res) => {
   }
 };
 
+/*----------------update user likes,bookmarks,stories---------------*/
 const updateUser = async (req, res) => {
   try {
     const { userName, password, bookmarks, stories, likes } = req.body;

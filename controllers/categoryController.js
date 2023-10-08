@@ -1,4 +1,4 @@
-const category = require("../models/category")
+const Category = require("../models/category")
 require("dotenv").config();
 
 const getCategories = async(req,res) => {

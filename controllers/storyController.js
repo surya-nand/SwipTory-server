@@ -1,4 +1,4 @@
-const story = require("../models/story");
+const Story = require("../models/story");
 require("dotenv").config();
 
 const getStory = async (req, res) => {
