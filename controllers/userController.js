@@ -15,7 +15,7 @@ const getUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { userName, password } = req.body;
+  const { userName, password, bookmarks,stories,likes } = req.body;
   try {
     const user = await storyUsers.findOne({ userName });
     if (!user) {
